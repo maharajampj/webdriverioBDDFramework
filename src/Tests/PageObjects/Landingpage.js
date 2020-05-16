@@ -2,32 +2,29 @@ import Page from './page'
 import BaseComponent from '../utilities/BaseComponent'
 class Landingpage extends Page 
 {
-      /**
-     * define or overwrite page methods
-     */
     open ()
     {
-     super.open("") ;   //this will append `values` to the baseUrl to form complete URL
+     super.open("") ;   
      browser.pause(2000);
     }
-    /**
-    * define elements
-    */
-   get From(){return $('//input[@id="src"]')}
-   get To(){return $('//input[@id="dest"]') }
-   get Search_btn(){return $('//button[@id="search_bt"]') }
+
+   get TasteStudio(){return $('//a[contains(@href,"/taste_explorer")]')}
+   get EngageStudio(){return $('//a[contains(@href,"/engage_studio")]') }
+   get CommerceStudio(){return $('//a[contains(@href,"/commercestudio")]') }
 
 
-   EnterLocation(from,to)
-   {
-    BaseComponent.sendKeys(this.From ,from)
-    BaseComponent.sendKeys(this.To,to)
-   }  
-  ClickSearchButton()
-  {
-    BaseComponent.click(this.Search_btn)
-    browser.pause(3000)
-  }
+ClickTasteStudio()
+{
+  BaseComponent.click(this.TasteStudio)
+}
+ClickEnagageStudio()
+{
+  BaseComponent.click(this.EngageStudio)
+}
+ClickCommerceStudio()
+{
+  BaseComponent.click(this.CommerceStudio)
+}
 }
 
 export default new Landingpage()

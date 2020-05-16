@@ -4,10 +4,9 @@ import Landingpage from '../pageobjects/Landingpage';
 
 
 
-When('User Enter {string} and {string}', (from,to) =>
+When('User Clicks CommerceStudio', () =>
 {
-   Landingpage.EnterLocation(from,to)  
-   Landingpage.ClickSearchButton()
+   Landingpage.ClickCommerceStudio()  
 });
 
 

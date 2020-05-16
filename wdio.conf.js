@@ -16,13 +16,11 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: [
-        './src/Tests/Feature/*.feature'
-    ],
+    specs: ['./src/Tests/Feature/*.feature'],
     // Patterns to exclude.
-    exclude: [
-        './src/Tests/pageObjects/*.js'
-    ],
+    // exclude: [
+    //     './src/Tests/pageObjects/*.js'
+    // ],
     //
     // ============
     // Capabilities
@@ -66,7 +64,7 @@ exports.config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     sync:true,
-    logLevel: 'silent',
+    logLevel: 'info',
     //
     // Set specific log levels per logger
     // loggers:
@@ -90,7 +88,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https:www.redbus.in',
+    baseUrl: 'http://demo.maya.ai:8082/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -134,7 +132,7 @@ exports.config = {
         compilers:['js:@babel/register'],
            // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
-        failFast: false,    // <boolean> abort the run on first failure
+        failFast: true,    // <boolean> abort the run on first failure
         format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
         snippets: true,     // <boolean> hide step definition snippets for pending steps
         source: true,       // <boolean> hide source uris
