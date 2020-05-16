@@ -1,39 +1,33 @@
-const Page=require('./page');
-const BaseComponent =require ('../utilities/BaseComponent');
-const From= browser.$('//input[@id="src"]')
-const To= browser.$('//input[@id="dest"]')
-const Search_btn= browser.$('//button[@id="search_btn"]')
-class Landingpage  
+import Page from './page'
+import BaseComponent from '../utilities/BaseComponent'
+class Landingpage extends Page 
 {
-  open ()
-  {
-   Page.open("") ;   //this will append `values` to the baseUrl to form complete URL
-  }
+      /**
+     * define or overwrite page methods
+     */
+    open ()
+    {
+     super.open("") ;   //this will append `values` to the baseUrl to form complete URL
+     browser.pause(2000);
+    }
     /**
     * define elements
     */
-    From=$('//input[@id="src"]')
-   search()
-   {
-     const From=$('//input[@id="src"]')
-     const To=$('//input[@id="dest"]')
-     const Search_btn=$('//button[@id="search_btn"]')
-   }
+   get From(){return $('//input[@id="src"]')}
+   get To(){return $('//input[@id="dest"]') }
+   get Search_btn(){return $('//button[@id="search_bt"]') }
 
-    /**
-     * define or overwrite page methods
-     */
-  
 
    EnterLocation(from,to)
    {
-    BaseComponent.sendKeys(From ,from)
-    browser.pause(3000)
-    BaseComponent.sendKeys(Search().To,to)
+    BaseComponent.sendKeys(this.From ,from)
+    BaseComponent.sendKeys(this.To,to)
    }  
   ClickSearchButton()
   {
-    BaseComponent.click(Search().Search_btn)
+    BaseComponent.click(this.Search_btn)
+    browser.pause(3000)
   }
 }
-module.exports=new Landingpage();
+
+export default new Landingpage()

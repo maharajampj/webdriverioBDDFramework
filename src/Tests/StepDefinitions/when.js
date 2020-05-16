@@ -1,5 +1,6 @@
-var When=require('cucumber')
-var Landingpage=require('../PageObjects/Landingpage')
+import {Given, When, Then} from 'cucumber';
+
+import Landingpage from '../pageobjects/Landingpage';
 
 
 

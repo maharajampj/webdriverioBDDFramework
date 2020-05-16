@@ -21,7 +21,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        // 'path/to/excluded/files'
+        './src/Tests/pageObjects/*.js'
     ],
     //
     // ============
@@ -39,7 +39,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -65,7 +65,8 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    sync:true,
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -124,21 +125,14 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: [['allure', {outputDir: './results/allure-results'}]],
+    reporters: ['allure'],
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./src/Tests/StepDefinitions/given.js','./src/Tests/StepDefinitions/then.js','./src/Tests/StepDefinitions/when.js'],        // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
-        requireModule: [
-            [
-                '@babel/register',
-                {
-                    rootMode: 'upward',
-                    ignore: ['node_modules']
-                }
-            ]
-        ],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
+        compilers:['js:@babel/register'],
+           // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
         failFast: false,    // <boolean> abort the run on first failure
         format: ['pretty'], // <string[]> (type[:path]) specify the output format, optionally supply PATH to redirect formatter output (repeatable)
@@ -184,16 +178,23 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+    beforeSession: function (config, capabilities, specs) 
+    {
+        const del=require('del')
+        del(['allure-report','allure-results']);
+     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function (capabilities, specs)
+     {
+        assert=require('assert');
+        expect = require('chai').expect;
+        require('@babel/register');
+    },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {String} commandName hook command name
@@ -219,8 +220,10 @@ exports.config = {
     /**
      * Runs after a Cucumber step
      */
-    // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) {
-    // },
+    afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) 
+    {
+        if (passed==false) { browser.takeScreenshot();}
+    },
     /**
      * Runs after a Cucumber scenario
      */

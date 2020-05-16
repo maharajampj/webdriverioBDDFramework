@@ -1,5 +1,6 @@
-var Then=require('cucumber')
-var Landingpage=require('../PageObjects/Landingpage')
+import { Then } from 'cucumber';
+
+import Landingpage from '../pageobjects/Landingpage';
 
 
 

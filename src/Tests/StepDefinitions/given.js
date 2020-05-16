@@ -1,5 +1,5 @@
-var Given=require('cucumber')
-var Landingpage=require('../PageObjects/Landingpage')
+import { Given} from 'cucumber';
+import Landingpage from '../pageobjects/Landingpage';
 
 
 // *** belongs to Yahoo serch feature

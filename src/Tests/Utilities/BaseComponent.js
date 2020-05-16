@@ -3,15 +3,14 @@ class BaseComponent
 
     isDisplayed(element)
     {
-        try {
-            if (element.isDisplayed()) 
-            {
-				return true
-            }
-        }
-        catch(error)
+         if(element.isDisplayed())
+         {
+             return true
+         }
+            else        
         {
-               return false
+            assert.fail();
+            
         }
     }
     isEnabled(element) 
@@ -39,7 +38,8 @@ class BaseComponent
 			blnValue = true;
 			}
 			catch (error) {
-			console.log(error)
+                console.log("Exception :"+error)
+                assert.fail();
 			}
 		}
 		return blnValue;
@@ -56,7 +56,8 @@ class BaseComponent
         }
         catch (error) 
         {
-        console.log(error)
+            console.log("Exception :"+error)
+            assert.fail();
         }
     }
 }
@@ -70,7 +71,8 @@ clear(element)
         }
         catch (error) 
         {
-        console.log(error)	
+            console.log("Exception :"+error)
+            assert.fail();
         }
     }
     getAllText(element) 
@@ -93,21 +95,8 @@ clear(element)
 				str = element.getText();
 			}
 			catch (error) {
-			console.log(error)
-			}
-		}
-		return str;
-    }
-    getValue(element) {
-		let str = "";
-        if (this.isDisplayed(element)) 
-        {
-			try {
-				str = element.getAttribute("value");
-			}
-            catch (error)
-             {
-                console.log(error)
+                console.log("Exception :"+error)
+                assert.fail();
 			}
 		}
 		return str;
@@ -122,7 +111,8 @@ clear(element)
 			}
             catch (error)
              {
-                console.log(error)
+                console.log("Exception :"+error)
+                assert.fail();
 			}
 		}
 		return str;
