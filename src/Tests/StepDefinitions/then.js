@@ -8,3 +8,7 @@ Then('User should navigate to CommerceStudio',  ()=>
  {
     CommerceStudiopage.VerifyCommerceStudioPage()
 });
+Then('User should navigate to Offer Onboarding',  ()=>
+ {
+    CommerceStudiopage.VerifyCommerceStudioPage()
+});

@@ -3,6 +3,7 @@ class BaseComponent
 
     isDisplayed(element)
     {
+        element.waitForDisplayed({ timeout: 5000 })
          if(element.isDisplayed())
          {
              return true

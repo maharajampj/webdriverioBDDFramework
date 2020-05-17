@@ -1,0 +1,14 @@
+{
+    "merchantName":"Symposium",
+    "location":["101"],
+    "shortOfferDescription":"Test Offer 1",
+    "longOfferDescription":"Long Offer Description 1",
+    "redemptionChannel":"Online",
+    "offerRedeemUrl":"https:/www.google.com",
+    "offerValidity":"21/05/2020-26/06/2020",
+    "offerTerms":"T&C",
+    "offerMedia":"Digitaxx",
+    "gotPermission":"Yes",
+    "approvedDate":"05/07/2020",
+    "approverEmail":"maha@yopmail.com"
+}

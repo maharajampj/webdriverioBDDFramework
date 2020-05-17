@@ -1,0 +1,10 @@
+var fs=require("fs")
+var jsonContents = fs.readFileSync("./OfferOnboarding.json");
+var obj=JSON.parse(jsonContents)
+console.log(obj.merchantName)
+console.log(obj.location)
+console.log(obj.shortOfferDescription)
+console.log(obj.longOfferDescription)
+console.log(obj.redemptionChannel)
+console.log(obj.offerRedeemUrl)
+console.log(obj.offerValidity)
