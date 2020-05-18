@@ -3,7 +3,7 @@ class BaseComponent
 
     isDisplayed(element)
     {
-        element.waitForDisplayed({ timeout: 5000 })
+        element.waitForDisplayed({ reverse: false })
          if(element.isDisplayed())
          {
              return true
@@ -16,12 +16,9 @@ class BaseComponent
     }
     isEnabled(element) 
     {
-		let blnValue = false;
-            if (this.isDisplayed(element)) 
-            {
-			blnValue = element.isEnabled();
-		    }
-			return blnValue;
+		
+			blnValue = element.waitForEnabled({  reverse:false });
+		  
 	}
     isSelected(element) {
 		let blnValue = false;
@@ -145,6 +142,18 @@ clear(element)
 		else {
 			console.log("Dropdown is not present");
         }	
+        }
+        moveToElement(element)
+        {
+         if(this.isDisplayed(element))
+         {
+            browser.moveToElement(element)
+         }
+            else        
+        {
+            assert.fail();
+            
+        }
         }
         pressTab() 
        {

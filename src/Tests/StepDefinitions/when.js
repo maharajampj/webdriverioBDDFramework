@@ -8,5 +8,10 @@ When('User Clicks CommerceStudio', () =>
 {
    Landingpage.ClickCommerceStudio()  
 });
+When('User Clicks EngageStudio', () =>
+{
+   
+   Landingpage.ClickEnagageStudio()  
+});
 
 

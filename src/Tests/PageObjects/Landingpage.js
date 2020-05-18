@@ -8,9 +8,12 @@ class Landingpage extends Page
      browser.pause(2000);
     }
 
-   get TasteStudio(){return $('//a[contains(@href,"/taste_explorer")]')}
-   get EngageStudio(){return $('//a[contains(@href,"/engage_studio")]') }
-   get CommerceStudio(){return $('//a[contains(@href,"/commercestudio")]') }
+   get TasteStudio(){return $('//b[contains(text(),"Taste Studio")]')}
+   get EngageStudio(){return $('//b[contains(text(),"Engage Studio")]') }
+   get CommerceStudio(){return $('//b[contains(text(),"Commerce Studio")]') }
+   get email(){return $('//input[@name="email"]')}
+   get pass(){return $('//input[@name="password"]')}
+   get submit(){return $('//button[@type="submit"]')}
 
 
 ClickTasteStudio()
@@ -24,6 +27,12 @@ ClickEnagageStudio()
 ClickCommerceStudio()
 {
   BaseComponent.click(this.CommerceStudio)
+}
+Login(email,pass)
+{
+  BaseComponent.sendKeys(this.email,email)
+  BaseComponent.sendKeys(this.pass,pass)
+  BaseComponent.click(this.submit)
 }
 }
 

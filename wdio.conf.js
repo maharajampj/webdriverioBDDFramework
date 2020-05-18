@@ -16,7 +16,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./src/Tests/Feature/*.feature'],
+    specs: ['./src/Tests/Feature/Login.feature'],
     // Patterns to exclude.
     // exclude: [
     //     './src/Tests/pageObjects/*.js'
@@ -51,6 +51,7 @@ exports.config = {
         maxInstances: 5,
         //
         browserName: 'chrome',
+        'goog:chromeOptions': {args: ['start-maximized'], },
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -88,10 +89,10 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://demo.maya.ai:8082/',
+    baseUrl: '',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 10000,
+    waitforTimeout: 15000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
