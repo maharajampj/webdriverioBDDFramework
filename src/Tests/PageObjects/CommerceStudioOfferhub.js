@@ -50,20 +50,20 @@ class CommerceStudioOfferhub extends Page
         {
               list3.push(list1[i]+list2[i])  
         }
-        console.log(list3)
-         expect(list3).to.have.members(search);
-    //  for(let i=0;i<list3.length;i++)
-    //  {
-    //      if(list3[i].toUpperCase().includes(search.toUpperCase()))
-    //      {
-    //         allureReporter.addArgument('Passed Merchant name : ',list3[i])
-    //      }
-    //      else
-    //      {
-    //         allureReporter.addArgument('Failed Merchant name : ',list3[i])
-    //          assert.fail()
-    //      }
-    //  }
+        //console.log(list3)
+         //expect(list3).to.have.members(search);
+     for(let i=0;i<list3.length;i++)
+     {
+         if(list3[i].toUpperCase().includes(search.toUpperCase()))
+         {
+            allureReporter.addArgument('Passed Merchant name : ',list3[i])
+         }
+         else
+         {
+            allureReporter.addArgument('Failed Merchant name : ',list3[i])
+             assert.fail()
+         }
+     }
 
     }
   ClickRightArrow()

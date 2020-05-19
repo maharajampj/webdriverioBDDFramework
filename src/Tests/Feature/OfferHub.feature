@@ -29,7 +29,7 @@ Feature: Validating Features in Offer Hub
         Then Validate the results are relative to "<searchBy>"
         Examples:
         |searchBy|
-        |a|
+        |Mas|
        Scenario: Verify Search functionality in Offers Hub table
         Given I am on the Maya Landing page
         When User Clicks CommerceStudio
