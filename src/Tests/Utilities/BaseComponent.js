@@ -42,6 +42,26 @@ class BaseComponent
 		}
 		return blnValue;
     }
+    isElementDisplayed(element)
+    {
+        let flag=false
+        if(element.isDisplayed())
+        {
+            flag=true
+        }
+        return flag
+    }
+    ClickTillVisible(element)
+    {
+        let i=0
+        do{
+        element.click() 
+        browser.pause(1000)
+        i++      
+        }
+        while(i<31)
+        
+    }
     sendKeys(element, strValue)
      {
         if (this.isDisplayed(element)) 
@@ -75,7 +95,7 @@ clear(element)
     }
    
     }
-    getAllText(element) 
+    getAllText(elements) 
     {
         // var strList=[]
         // for (let i = 0; i < element.size(); i++)
@@ -84,12 +104,11 @@ clear(element)
 		// }
         // return strList;
         var strList=[]
-        element.forEach(element => 
+        elements.forEach(element => 
         {
-            if(this.isDisplayed(element))
-            {
+            
             strList.push(element.getText());
-            }
+            
         });
         return strList;
     }

@@ -42,4 +42,9 @@ Then('User should navigate to CampaignsHub',  ()=>
  {
    CommerceStudioOfferhub.ValidateTableForSearchText(string)
  });
+ Then('Validate the potential spends in expiring offers',  ()=>
+ {
+   CommerceStudioOfferhub.ClickRightArrow()
+   CommerceStudioOfferhub.ValidatePotentialSpendsinExpiringOffers()
+});
  

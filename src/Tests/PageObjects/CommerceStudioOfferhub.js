@@ -14,6 +14,8 @@ class CommerceStudioOfferhub extends Page
     get SearchField()   {return $('//input[@name="search"]')}
     get OfferNameList() {return $$('//tr[contains(@data-tut,"offers_table")]/child::td[2]')}
     get MerchantNameList() {return $$('//tr[contains(@data-tut,"offers_table")]/child::td[3]')}
+    get ExpiringOffersrightClick(){return $('//button[@class="slick-arrow slick-next"]')}
+    get potentialSpends(){return $$('//div[@class="col-md-4"]/p')}
     
     
     ClickAddNewOffer()
@@ -64,7 +66,19 @@ class CommerceStudioOfferhub extends Page
     //  }
 
     }
-  
+  ClickRightArrow()
+  {
+      BaseComponent.ClickTillVisible(this.ExpiringOffersrightClick)
+  }
+  ValidatePotentialSpendsinExpiringOffers()
+  {
+      var list4=BaseComponent.getAllText(this.potentialSpends)
+      for(let i=0;i<list4.length;i++)
+      {
+      allureReporter.addArgument('List Of Potentials Spends : ',list4[i])
+      }
+
+  }
 
 }
 export default new CommerceStudioOfferhub()
