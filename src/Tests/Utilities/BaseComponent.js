@@ -73,15 +73,25 @@ clear(element)
             assert.fail();
         }
     }
+   
+    }
     getAllText(element) 
     {
+        // var strList=[]
+        // for (let i = 0; i < element.size(); i++)
+        //  {
+		// strList.push(element[i].getText());
+		// }
+        // return strList;
         var strList=[]
-        for (let i = 0; i < element.size(); i++)
-         {
-		strList.push(element[i].getText());
-		}
+        element.forEach(element => 
+        {
+            if(this.isDisplayed(element))
+            {
+            strList.push(element.getText());
+            }
+        });
         return strList;
-    }
     }
     getText(element) 
     {

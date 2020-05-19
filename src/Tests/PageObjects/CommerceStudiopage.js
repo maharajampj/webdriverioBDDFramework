@@ -4,8 +4,8 @@ class CommerceStudiopage extends Page
 {
 
     get VerifyCommerceStudio(){return $('//span[contains(text(),"Merchants")]')}
-    get OfferHubbtn(){return $('//a[contains(@href,"/offers")]')}
-    get AddnewMerchantbtn(){return  browser.react$('Anonymous', {
+    get OfferHubbtn()         {return $('//a[contains(@href,"/offers")]')}
+    get AddnewMerchantbtn()   {return  browser.react$('Anonymous', {
         props: { path: '/commercestudio/suggestedmerchants' }
     })}
 
@@ -17,11 +17,11 @@ class CommerceStudiopage extends Page
     {
         BaseComponent.click(this.OfferHubbtn)
     }
-    ClickAddNewMerchant()
+    ClickOffersHub()
     {
-       console.log( browser.react$('Anonymous', {
-            props: { page:'Suggested',qValue:'suggested_merchants'}
-        }).getText())
+        browser.react$('t', {
+            props: { to:'/commercestudio/offers'}
+        }).click();
 
     }
 

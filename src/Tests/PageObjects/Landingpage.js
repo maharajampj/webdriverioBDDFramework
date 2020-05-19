@@ -5,15 +5,14 @@ class Landingpage extends Page
     open ()
     {
      super.open("") ;   
-     browser.pause(2000);
     }
 
-   get TasteStudio(){return $('//b[contains(text(),"Taste Studio")]')}
-   get EngageStudio(){return $('//b[contains(text(),"Engage Studio")]') }
-   get CommerceStudio(){return $('//b[contains(text(),"Commerce Studio")]') }
-   get email(){return $('//input[@name="email"]')}
-   get pass(){return $('//input[@name="password"]')}
-   get submit(){return $('//button[@type="submit"]')}
+   get TasteStudio()    {return $('//b[contains(text(),"Taste Studio")]')}
+   get EngageStudio()   {return $('//b[contains(text(),"Engage Studio")]') }
+   get CommerceStudio() {return $('//b[contains(text(),"Commerce Studio")]') }
+   get email()          {return $('//input[@name="email"]')}
+   get pass()           {return $('//input[@name="password"]')}
+   get submit()         {return $('//button[@type="submit"]')}
 
 
 ClickTasteStudio()

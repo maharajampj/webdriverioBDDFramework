@@ -28,5 +28,7 @@
     "wdio-chromedriver-service": "^6.0.3",
     "webdriverio": "^6.1.11"
   },
-  "dependencies": {}
+  "dependencies": {
+    "chai-arrays": "^2.0.0"
+  }
 }

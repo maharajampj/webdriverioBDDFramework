@@ -12,7 +12,8 @@ class EngageAIpage extends Page
     navigateToSideNavBar()
     {
        // BaseComponent.moveToElement(this.sideNavBar)
-       browser.react$('t', {state: { sidebarExpanded: "false" }}).click()
+       browser.pause(8000)
+       browser.react$('t', {state: { sidebarExpanded: 'false' }}).click()
     }
     navigateToCampaignshub()
     {

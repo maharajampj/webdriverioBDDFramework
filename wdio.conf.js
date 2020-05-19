@@ -16,7 +16,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./src/Tests/Feature/Login.feature'],
+    specs: ['./src/Tests/Feature/OfferHub.feature'],
     // Patterns to exclude.
     // exclude: [
     //     './src/Tests/pageObjects/*.js'
@@ -89,17 +89,17 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: '',
+    baseUrl: 'http://demo.maya.ai:8082/',
     //
     // Default timeout for all waitFor* commands.
-    waitforTimeout: 15000,
+    waitforTimeout: 20000,
     //
     // Default timeout in milliseconds for request
     // if browser driver or grid doesn't send response
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 3,
+    connectionRetryCount: 1,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -193,6 +193,9 @@ exports.config = {
         assert=require('assert');
         expect = require('chai').expect;
         require('@babel/register');
+        const chai = require('chai');
+        const assertArrays = require('chai-arrays');
+        chai.use(assertArrays);
     },
     /**
      * Runs before a WebdriverIO command gets executed.
