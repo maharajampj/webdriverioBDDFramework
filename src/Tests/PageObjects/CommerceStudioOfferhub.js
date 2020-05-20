@@ -16,6 +16,7 @@ class CommerceStudioOfferhub extends Page
     get MerchantNameList() {return $$('//tr[contains(@data-tut,"offers_table")]/child::td[3]')}
     get ExpiringOffersrightClick(){return $('//button[@class="slick-arrow slick-next"]')}
     get potentialSpends(){return $$('//div[@class="col-md-4"]/p')}
+    get ErrorMessageSearch(){return $('//p[text()="No Such Offers Found!"]')}
     
     
     ClickAddNewOffer()
@@ -52,8 +53,14 @@ class CommerceStudioOfferhub extends Page
         }
         //console.log(list3)
          //expect(list3).to.have.members(search);
+         if(list3.length==0)
+         {
+            allureReporter.addArgument('No Merchant Name is Returned')
+            BaseComponent.failStep(this.ErrorMessageSearch)
+        }
      for(let i=0;i<list3.length;i++)
      {
+        
          if(list3[i].toUpperCase().includes(search.toUpperCase()))
          {
             allureReporter.addArgument('Passed Merchant name : ',list3[i])

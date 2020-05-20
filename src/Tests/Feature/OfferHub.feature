@@ -1,5 +1,6 @@
 Feature: Validating Features in Offer Hub
- Scenario Outline: Verify Dining Offer Count
+
+    Scenario Outline: Verify Dining Offer Count
         Given I am on the Maya Landing page
         When User Clicks CommerceStudio
         And Verify user is on CommerceStudio
@@ -29,8 +30,8 @@ Feature: Validating Features in Offer Hub
         Then Validate the results are relative to "<searchBy>"
         Examples:
         |searchBy|
-        |Mas|
-       Scenario: Verify Search functionality in Offers Hub table
+        | |
+    Scenario: Verify potential spends in expiring offers
         Given I am on the Maya Landing page
         When User Clicks CommerceStudio
         And Verify user is on CommerceStudio

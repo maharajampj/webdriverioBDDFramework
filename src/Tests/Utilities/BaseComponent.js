@@ -3,13 +3,14 @@ class BaseComponent
 
     isDisplayed(element)
     {
-        element.waitForDisplayed({ reverse: false })
+        element.waitForDisplayed({ timeout: 10000 })
          if(element.isDisplayed())
          {
              return true
          }
             else        
         {
+            element.scrollIntoView();
             assert.fail();
             
         }
@@ -17,7 +18,16 @@ class BaseComponent
     isEnabled(element) 
     {
 		
-			blnValue = element.waitForEnabled({  reverse:false });
+        if(element.isEnabled())
+        {
+            return true
+        }
+           else        
+       {
+           element.scrollIntoView();
+           assert.fail();
+           
+       }
 		  
 	}
     isSelected(element) {
@@ -37,6 +47,7 @@ class BaseComponent
 			}
 			catch (error) {
                 console.log("Exception :"+error)
+                element.scrollIntoView()
                 assert.fail();
 			}
 		}
@@ -51,6 +62,15 @@ class BaseComponent
         }
         return flag
     }
+    failStep(element)
+    {
+        if(element.isDisplayed())
+        {
+            element.scrollIntoView()
+            assert.fail()
+        }
+
+    }
     ClickTillVisible(element)
     {
         let i=0
@@ -64,20 +84,17 @@ class BaseComponent
     }
     sendKeys(element, strValue)
      {
-        if (this.isDisplayed(element)) 
-        {
-        try 
-        {
+        try{
+      
         element.click();
         element.clearValue()
         element.setValue(strValue);
         }
-        catch (error) 
+      catch(error)
         {
-            console.log("Exception :"+error)
+            element.scrollIntoView()
             assert.fail();
         }
-    }
 }
 clear(element) 
 {
@@ -90,6 +107,7 @@ clear(element)
         catch (error) 
         {
             console.log("Exception :"+error)
+            element.scrollIntoView()
             assert.fail();
         }
     }
@@ -123,6 +141,7 @@ clear(element)
 			}
 			catch (error) {
                 console.log("Exception :"+error)
+                element.scrollIntoView()
                 assert.fail();
 			}
 		}
@@ -139,6 +158,7 @@ clear(element)
             catch (error)
              {
                 console.log("Exception :"+error)
+                element.scrollIntoView()
                 assert.fail();
 			}
 		}
@@ -180,6 +200,7 @@ clear(element)
          }
             else        
         {
+            element.scrollIntoView()
             assert.fail();
             
         }
