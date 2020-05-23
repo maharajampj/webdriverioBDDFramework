@@ -1,3 +1,4 @@
+const { join } = require('path');
 exports.config = {
     //
     // ====================
@@ -16,7 +17,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./src/Tests/Feature/OfferHub.feature'],
+    specs: ['./src/Tests/Feature/imageValidation.feature'],
     // Patterns to exclude.
     // exclude: [
     //     './src/Tests/pageObjects/*.js'
@@ -89,7 +90,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://demo.maya.ai:8082/',
+    baseUrl: 'https://www.facebook.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 20000,
@@ -99,25 +100,25 @@ exports.config = {
     connectionRetryTimeout: 120000,
     //
     // Default request retries count
-    connectionRetryCount: 2,
+    connectionRetryCount: 0,
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver', ['image-comparison',
+    services: ['intercept','chromedriver', ['image-comparison',
     // The options
     {
         // Some options, see the docs for more
-        baselineFolder: join(process.cwd(), './tests/sauceLabsBaseline/'),
-        formatImageName: '{tag}-{logName}-{width}x{height}',
-        screenshotPath: join(process.cwd(), '.tmp/'),
+        baselineFolder: join(process.cwd(), 'Baselineimg'),
+        formatImageName: '{tag}',
+        screenshotPath: join(process.cwd(), 'tmp/'),
         savePerInstance: true,
         autoSaveBaseline: true,
         blockOutStatusBar: true,
         blockOutToolBar: true,
         // NOTE: When you are testing a hybrid app please use this setting
-        isHybridApp: true,
+        isHybridApp: false,
         // Options for the tabbing image
         tabbableOptions:{
             circle:{
@@ -206,7 +207,7 @@ exports.config = {
     beforeSession: function (config, capabilities, specs) 
     {
         const del=require('del')
-        del(['allure-report','allure-results']);
+        del(['allure-report','allure-results','./temp']);
      },
     /**
      * Gets executed before test execution begins. At this point you can access to all global

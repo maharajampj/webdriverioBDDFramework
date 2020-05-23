@@ -1,3 +1,4 @@
+import allureReporter from '@wdio/allure-reporter'
 class BaseComponent
 {
 
@@ -241,7 +242,19 @@ clear(element)
        pasteFromClipboard() 
         {
             const text =  navigator.clipboard.readText();
-	    }
+        }
+        ValidateImage(path)
+        {
+            browser.saveFullPageScreen('fullPage');
+            const Diffratio=browser.checkFullPageScreen('fullPage')
+            if(Diffratio>0)
+            {
+              browser.url(process.cwd()+path) 
+              allureReporter.addArgument('The Difference ratio is :',Diffratio)
+              expect(Diffratio).to.equal(0)
+            }
+
+        }
    
 }
 module.exports=new BaseComponent();

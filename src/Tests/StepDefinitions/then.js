@@ -5,6 +5,7 @@ import EngageAIpage from '../PageObjects/EnagageAIpage'
 import Campaignshubpage from '../PageObjects/Campaignshubpage'
 import allureReporter from '@wdio/allure-reporter'
 import CommerceStudioOfferhub from '../PageObjects/CommerceStudioOfferhub'
+import BaseComponent from'../Utilities/BaseComponent'
 
 
 
@@ -46,5 +47,9 @@ Then('User should navigate to CampaignsHub',  ()=>
  {
    CommerceStudioOfferhub.ClickRightArrow()
    CommerceStudioOfferhub.ValidatePotentialSpendsinExpiringOffers()
+});
+Then('System Validates the screen with {string}',(string)=>
+{
+   BaseComponent.ValidateImage(string)
 });
  
