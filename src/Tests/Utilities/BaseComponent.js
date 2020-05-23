@@ -245,11 +245,11 @@ clear(element)
         }
         ValidateImage(path)
         {
-            browser.saveFullPageScreen('fullPage');
-            const Diffratio=browser.checkFullPageScreen('fullPage')
+            browser.saveFullPageScreen(path);
+            const Diffratio=browser.checkFullPageScreen(path)
             if(Diffratio>0)
             {
-              browser.url(process.cwd()+path) 
+              browser.url(process.cwd()+'\\tmp\\diff\\desktop_chrome\\'+path+'.png') 
               allureReporter.addArgument('The Difference ratio is :',Diffratio)
               expect(Diffratio).to.equal(0)
             }

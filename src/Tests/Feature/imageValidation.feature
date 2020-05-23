@@ -6,4 +6,4 @@ Feature: Validate the image with the given baseLine
         Then System Validates the screen with "<path>"
         Examples:
         | path | 
-        |\\tmp\\diff\\desktop_chrome\\fullPage.png| 
+        |fullPage| 
