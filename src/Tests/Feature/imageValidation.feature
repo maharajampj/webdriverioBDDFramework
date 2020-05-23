@@ -1,9 +1,9 @@
 Feature: Validate the image with the given baseLine
 
 
-    Scenario Outline:Verify pixel by pixel based on baseLine image
-        Given I am on the faceBook Landing Page
-        Then System Validates the screen with "<path>"
+        Scenario Outline:Verify pixel by pixel based on Merchant Hub Page
+        Given I am on the Merchant Hub Page
+        Then Validates the screen with "<path>"
         Examples:
         | path | 
-        |fullPage| 
+        |merchantHub| 

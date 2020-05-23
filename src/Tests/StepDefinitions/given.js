@@ -1,5 +1,6 @@
 import { Given} from 'cucumber';
 import Landingpage from '../pageobjects/Landingpage';
+import MerchantHubpage from '../PageObjects/MerchantHub'
 
 
 Given('I am on the Maya Landing page', function () 
@@ -8,9 +9,9 @@ Given('I am on the Maya Landing page', function ()
   //Landingpage.Login('','');  
 });
 
-Given('I am on the faceBook Landing Page', function () 
+Given('I am on the Merchant Hub Page', function () 
 {
-  Landingpage.open(); 
+  MerchantHubpage.open(); 
   //Landingpage.Login('','');  
 });
 

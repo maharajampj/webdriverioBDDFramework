@@ -48,7 +48,7 @@ Then('User should navigate to CampaignsHub',  ()=>
    CommerceStudioOfferhub.ClickRightArrow()
    CommerceStudioOfferhub.ValidatePotentialSpendsinExpiringOffers()
 });
-Then('System Validates the screen with {string}',(string)=>
+Then('Validates the screen with {string}',(string)=>
 {
    BaseComponent.ValidateImage(string)
 });
