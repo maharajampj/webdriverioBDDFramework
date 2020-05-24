@@ -4,7 +4,7 @@
   "description": "BDDFrameworkWithWDIO",
   "main": "index.js",
   "scripts": {
-    "test": "wdio wdio.conf.js",
+    "test":"wdio wdio.conf.js",
     "start": "./node_modules/.bin/selenium-standalone start",
     "report": "allure generate --clean & allure open"
   },

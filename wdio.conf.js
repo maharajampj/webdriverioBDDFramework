@@ -1,4 +1,5 @@
 const { join } = require('path');
+let baseUrl=process.env.USE_QA==='true'?'http://bankmaya.buildmaya.com:8082/':'http://demo.maya.ai:8082/'
 exports.config = {
     //
     // ====================
@@ -90,7 +91,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'http://demo.maya.ai:8082/',
+    baseUrl,
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 20000,
