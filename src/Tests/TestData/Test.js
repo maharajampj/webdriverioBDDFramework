@@ -1,10 +1,25 @@
 var fs=require("fs")
-var jsonContents = fs.readFileSync("./OfferOnboarding.json");
-var obj=JSON.parse(jsonContents)
-console.log(obj.merchantName)
-console.log(obj.location)
-console.log(obj.shortOfferDescription)
-console.log(obj.longOfferDescription)
-console.log(obj.redemptionChannel)
-console.log(obj.offerRedeemUrl)
-console.log(obj.offerValidity)
+
+
+resultArray=[]
+resultArray=getValueByKey('./OfferOnboarding.json','approverEmail')
+console.log(resultArray[2])
+
+
+function getValueByKey(path,value)
+{
+    var jsonContents = fs.readFileSync(path);
+    var jsonObj=JSON.parse(jsonContents)
+    var result   
+       for(key in jsonObj)
+       {
+          if(key ===value)
+          {
+            result=jsonObj[key]
+
+          }
+       }
+    
+    return result
+    
+}

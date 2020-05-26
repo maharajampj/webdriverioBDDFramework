@@ -1,5 +1,6 @@
 const { join } = require('path');
-let baseUrl=process.env.USE_QA==='true'?'http://bankmaya.buildmaya.com:8082/':'http://demo.maya.ai:8082/'
+let baseUrl=process.env.USE_QA==='true'?'http://bankmaya.buildmaya.com:8085/':'http://demo.maya.ai:8082/'
+
 exports.config = {
     //
     // ====================
@@ -209,6 +210,8 @@ exports.config = {
     {
         const del=require('del')
         del(['allure-report','allure-results','./temp']);
+      
+
      },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
@@ -224,7 +227,8 @@ exports.config = {
         const chai = require('chai');
         const assertArrays = require('chai-arrays');
         chai.use(assertArrays);
-        var request = require('sync-request');
+        
+
     },
     /**
      * Runs before a WebdriverIO command gets executed.

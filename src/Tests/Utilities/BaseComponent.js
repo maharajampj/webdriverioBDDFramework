@@ -1,4 +1,5 @@
-import allureReporter from '@wdio/allure-reporter'
+import reporter from '../Utilities/Report'
+var fs=require("fs")
 class BaseComponent
 {
 
@@ -12,6 +13,7 @@ class BaseComponent
             else        
         {
             element.scrollIntoView();
+            reporter.addStep(element+' is not Displayed','Failed')
             assert.fail();
             
         }
@@ -26,6 +28,7 @@ class BaseComponent
            else        
        {
            element.scrollIntoView();
+           reporter.addStep(element+' is not enabled','Failed')
            assert.fail();
            
        }
@@ -49,6 +52,7 @@ class BaseComponent
 			catch (error) {
                 console.log("Exception :"+error)
                 element.scrollIntoView()
+                reporter.addStep(element+' is not Clickable','Failed')
                 assert.fail();
 			}
 		}
@@ -116,12 +120,6 @@ clear(element)
     }
     getAllText(elements) 
     {
-        // var strList=[]
-        // for (let i = 0; i < element.size(); i++)
-        //  {
-		// strList.push(element[i].getText());
-		// }
-        // return strList;
         var strList=[]
         elements.forEach(element => 
         {
@@ -250,10 +248,28 @@ clear(element)
             if(Diffratio>0)
             {
               browser.url(process.cwd()+'\\tmp\\diff\\desktop_chrome\\'+path+'.png') 
-              allureReporter.addArgument('The Difference ratio is :',Diffratio)
+              reporter.addArgument('The Difference ratio is :',Diffratio)
               expect(Diffratio).to.equal(0)
             }
 
+        }
+
+         getValueByKey(path,value)
+        {
+            var jsonContents = fs.readFileSync(path);
+            var jsonObj=JSON.parse(jsonContents)
+            var result   
+               for(key in jsonObj)
+               {
+                  if(key ===value)
+                  {
+                    result=jsonObj[key]
+        
+                  }
+               }
+            
+            return result
+            
         }
    
 }

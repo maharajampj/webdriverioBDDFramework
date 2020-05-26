@@ -1,6 +1,6 @@
 import allureReporter from '@wdio/allure-reporter'
 
-class Reporter
+class Report 
 {
 
     addLabel(name,value)
@@ -31,10 +31,6 @@ class Reporter
     {
         allureReporter.addEnvironment(name,value)
     }
-    addEnvironment(name,value)
-    {
-        allureReporter.addEnvironment(name,value)
-    }
     addArgument(name,value)
     {
         allureReporter.addArgument(name,value)
@@ -58,4 +54,4 @@ class Reporter
 
 
 }
-export default new Reporter()
+export default new Report()

@@ -1,6 +1,7 @@
 import Page from './Page'
 import BaseComponent from '../utilities/BaseComponent'
-import allureReporter from '@wdio/allure-reporter'
+import reporter from '../Utilities/Report'
+
 class CommerceStudioOfferhub extends Page
 {
 
@@ -55,7 +56,7 @@ class CommerceStudioOfferhub extends Page
          //expect(list3).to.have.members(search);
          if(list3.length==0)
          {
-            allureReporter.addArgument('No Merchant Name is Returned')
+            reporter.addArgument('No Merchant Name is Returned')
             BaseComponent.failStep(this.ErrorMessageSearch)
         }
      for(let i=0;i<list3.length;i++)
@@ -63,11 +64,11 @@ class CommerceStudioOfferhub extends Page
         
          if(list3[i].toUpperCase().includes(search.toUpperCase()))
          {
-            allureReporter.addArgument('Passed Merchant name : ',list3[i])
+            reporter.addArgument('Passed Merchant name : ',list3[i])
          }
          else
          {
-            allureReporter.addArgument('Failed Merchant name : ',list3[i])
+            reporter.addArgument('Failed Merchant name : ',list3[i])
              assert.fail()
          }
      }
@@ -82,7 +83,7 @@ class CommerceStudioOfferhub extends Page
       var list4=BaseComponent.getAllText(this.potentialSpends)
       for(let i=0;i<list4.length;i++)
       {
-      allureReporter.addArgument('List Of Potentials Spends : ',list4[i])
+        reporter.addArgument('List Of Potentials Spends : ',list4[i])
       }
 
   }
