@@ -1,5 +1,17 @@
 const { join } = require('path');
-let baseUrl=process.env.USE_QA==='true'?'http://bankmaya.buildmaya.com:8085/':'http://demo.maya.ai:8082/'
+let baseUrl;
+
+if(process.env.USE_QA==='true')
+{
+    baseUrl='http://bankmaya.buildmaya.com:8085/'
+}
+else if(process.env.USE_QA==='wdio')
+{
+    baseUrl='http://www.webdriveruniversity.com/'
+}
+else{
+    baseUrl='http://demo.maya.ai:8082/'
+}
 
 exports.config = {
     //
@@ -19,7 +31,7 @@ exports.config = {
     // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
     // directory is where your package.json resides, so `wdio` will be called from there.
     //
-    specs: ['./src/Tests/Feature/imageValidation.feature'],
+    specs: ['./src/Tests/Feature/CampaignsHub.feature'],
     // Patterns to exclude.
     // exclude: [
     //     './src/Tests/pageObjects/*.js'
@@ -221,8 +233,8 @@ exports.config = {
      */
     before: function (capabilities, specs)
      {
-        assert=require('assert');
-        expect = require('chai').expect;
+        const assert=require('assert');
+        const expect = require('chai').expect;
         require('@babel/register');
         const chai = require('chai');
         const assertArrays = require('chai-arrays');
